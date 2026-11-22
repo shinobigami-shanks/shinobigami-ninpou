@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark" />
+<link rel="icon" href="data:," />
+<title>サポートブック掲載汎用忍法まとめ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Serif+JP:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+--ink:#0a0908;
+--ink2:#12100e;
+--panel:#171410;
+--panel2:#1d1913;
+--paper:#e8ddc4;
+--paper-dim:#b8ab8d;
+--paper-faint:#8a7f66;
+--crimson:#8e1f1f;
+--crimson-bright:#c03434;
+--gold:#a98c4f;
+--gold-dim:#6f5c33;
+--line:#3a3226;
+--line-soft:#2a241b;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+margin:0;
+background:
+radial-gradient(1100px 500px at 85% -5%, rgba(142,31,31,.14), transparent 60%),
+radial-gradient(800px 600px at -10% 30%, rgba(169,140,79,.06), transparent 55%),
+repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 5px),
+linear-gradient(180deg, #0d0b09, var(--ink) 30%, #0c0a08);
+color:var(--paper);
+font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic",sans-serif;
+overflow-x:hidden;
+}
+/* 透かし「忍」 */
+.watermark{
+position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+}
+.watermark span{
+position:absolute; right:-4rem; top:6rem;
+font-family:"Shippori Mincho B1","Noto Serif JP",serif; font-weight:800;
+font-size:min(62vw,34rem); line-height:1; color:rgba(232,221,196,.035);
+transform:rotate(6deg);
+}
+.watermark span.b{
+right:auto; left:-6rem; top:auto; bottom:-8rem;
+font-size:min(50vw,26rem); transform:rotate(-8deg); color:rgba(142,31,31,.05);
+}
+.wrap{position:relative; z-index:1; max-width:1060px; margin:0 auto; padding:0 20px 90px;}
+
+/* ===== 題字 ===== */
+header{padding:64px 0 8px; position:relative;}
+.seal-row{display:flex; align-items:flex-start; gap:18px;}
+.seal{
+flex:0 0 auto; width:58px; height:58px; margin-top:10px;
+background:var(--crimson); color:#f3e9d2;
+font-family:"Shippori Mincho B1",serif; font-weight:800; font-size:30px;
+display:flex; align-items:center; justify-content:center;
+border-radius:6px; transform:rotate(-4deg);
+box-shadow:0 0 0 2px rgba(243,233,210,.15) inset, 0 10px 28px rgba(0,0,0,.6);
+letter-spacing:0;
+}
+h1{
+margin:0; font-family:"Shippori Mincho B1","Noto Serif JP",serif; font-weight:800;
+font-size:clamp(30px,6.2vw,58px); line-height:1.25; letter-spacing:.04em; color:var(--paper);
+text-shadow:0 3px 22px rgba(0,0,0,.8);
+}
+.accent{color:var(--crimson-bright);}
+.sub{
+margin:16px 0 0 76px; color:var(--paper-dim); font-size:14px; line-height:1.9; letter-spacing:.06em;
+max-width:620px;
+}
+.sub b{color:var(--gold); font-weight:600;}
+.rule{height:1px; margin:34px 0 0; background:linear-gradient(90deg, var(--crimson), var(--gold-dim) 45%, transparent);}
+.rule2{height:1px; margin:5px 0 0; background:linear-gradient(90deg, rgba(142,31,31,.5), transparent 70%);}
+
+nav.genre-nav{display:flex; flex-wrap:wrap; gap:10px; margin:26px 0 4px 76px;}
+nav.genre-nav a{
+color:var(--paper); text-decoration:none; font-family:"Shippori Mincho B1",serif; font-weight:700;
+font-size:15px; letter-spacing:.14em; padding:10px 18px; min-height:44px;
+display:inline-flex; align-items:center; gap:9px;
+border:1px solid var(--line); background:rgba(23,20,16,.75);
+}
+nav.genre-nav a i{font-style:normal; color:var(--crimson-bright); font-size:12px;}
+nav.genre-nav a:hover{border-color:var(--gold-dim); background:var(--panel2);}
+
+/* ===== 章 ===== */
+section.genre{position:relative; margin-top:74px; padding-left:64px;}
+.genre-label{
+position:absolute; left:0; top:6px; bottom:0; width:44px;
+display:flex; flex-direction:column; align-items:center; gap:14px;
+}
+.vtext{
+writing-mode:vertical-rl; text-orientation:upright;
+font-family:"Shippori Mincho B1",serif; font-weight:800; letter-spacing:.34em;
+font-size:26px; color:var(--paper);
+border-top:2px solid var(--crimson); padding-top:16px;
+}
+.vline{width:1px; flex:1; background:linear-gradient(180deg, var(--gold-dim), transparent);}
+.count{
+writing-mode:vertical-rl; font-size:11px; letter-spacing:.3em; color:var(--paper-faint);
+}
+.genre-head{display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:8px;}
+.genre-head h2{
+margin:0; font-family:"Shippori Mincho B1",serif; font-weight:800;
+font-size:clamp(24px,4.4vw,36px); letter-spacing:.1em;
+}
+.genre-head h2::first-letter{color:var(--crimson-bright);}
+.en{font-size:11px; letter-spacing:.42em; color:var(--paper-faint); text-transform:uppercase;}
+.genre-note{color:var(--paper-dim); font-size:13.5px; line-height:1.9; margin:0 0 30px; max-width:640px;}
+
+/* ===== 忍法カード（ジャンルごとに縦2列：左列を上から読み、続いて右列） ===== */
+.cards{
+display:grid; grid-template-columns:1fr 1fr; grid-auto-flow:column;
+gap:30px 24px;
+}
+#attack .cards{grid-template-rows:repeat(3, auto);}
+#support .cards{grid-template-rows:repeat(5, auto);}
+#equip .cards{grid-template-rows:repeat(2, auto);}
+.card{
+background:linear-gradient(175deg, var(--panel2), var(--panel) 55%, #14110d);
+border:1px solid var(--line);
+box-shadow:10px 14px 34px rgba(0,0,0,.55);
+position:relative; min-width:0;
+}
+.card::before{
+content:""; position:absolute; inset:5px; border:1px solid rgba(169,140,79,.14); pointer-events:none;
+}
+.card-head{
+display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+background:#060505; padding:15px 20px 13px; border-bottom:3px double var(--gold-dim);
+position:relative;
+}
+.no{
+font-family:"Shippori Mincho B1",serif; color:var(--crimson-bright); font-size:13px; letter-spacing:.1em;
+}
+.name{
+font-family:"Shippori Mincho B1","Noto Serif JP",serif; font-weight:900;
+font-size:clamp(26px,4.6vw,34px); letter-spacing:.08em; color:#f2e8d0; line-height:1.1;
+}
+.yomi{font-size:15px; color:var(--paper-dim); letter-spacing:.14em;}
+.hanyou{
+margin-left:auto; font-family:"Shippori Mincho B1",serif; font-weight:700; font-size:14px; letter-spacing:.3em;
+color:#0d0b09; background:var(--paper); padding:4px 10px 4px 13px;
+}
+.meta{
+display:flex; flex-wrap:wrap; border-bottom:1px solid var(--line-soft);
+font-size:14.5px;
+}
+.cell{display:flex; align-items:center; gap:9px; padding:10px 16px; border-right:1px solid var(--line-soft);}
+.cell:last-child{border-right:none;}
+.k{
+font-family:"Shippori Mincho B1",serif; font-weight:700; font-size:12px; letter-spacing:.12em;
+background:#060505; color:var(--gold); border:1px solid var(--line); padding:3px 8px; white-space:nowrap;
+}
+.v{font-weight:600; color:var(--paper); white-space:nowrap;}
+.tokugi{
+display:flex; align-items:center; gap:12px; padding:10px 16px;
+border-bottom:1px solid var(--line-soft); font-size:14.5px;
+}
+.k{
+font-family:"Shippori Mincho B1",serif; font-weight:700; font-size:12px; letter-spacing:.12em;
+background:#060505; color:var(--gold); border:1px solid var(--line); padding:3px 8px; white-space:nowrap;
+}
+.v{font-weight:600;}
+.effect{padding:17px 20px 6px; font-size:15.5px; line-height:2.05; letter-spacing:.02em; color:#ded2b4;}
+.effect strong,.tokugi strong{color:#f2e8d0;}
+.flavor{
+margin:14px 20px 19px; padding:12px 15px 11px;
+border-top:1px solid var(--line-soft);
+font-family:"Shippori Mincho B1","Noto Serif JP",serif; font-size:13.5px; line-height:1.95;
+color:var(--paper-dim); letter-spacing:.03em;
+}
+.flavor::before{content:"―― "; color:var(--crimson-bright);}
+
+footer{margin-top:96px; text-align:center; color:var(--paper-faint); font-size:12px; letter-spacing:.22em; line-height:2.2;}
+.fseal{
+display:inline-flex; width:40px; height:40px; align-items:center; justify-content:center;
+background:var(--crimson); color:#f3e9d2; border-radius:5px; transform:rotate(3deg);
+font-family:"Shippori Mincho B1",serif; font-weight:800; font-size:21px; margin-bottom:14px;
+}
+
+@media (max-width:900px){
+.cards{grid-template-columns:1fr; grid-auto-flow:row; gap:26px;}
+#attack .cards,#support .cards,#equip .cards{grid-template-rows:none;}
+}
+@media (max-width:640px){
+.wrap{padding:0 14px 70px;}
+header{padding-top:44px;}
+.seal{width:46px; height:46px; font-size:24px;}
+.sub, nav.genre-nav{margin-left:0;}
+section.genre{padding-left:0; margin-top:58px;}
+.genre-label{position:static; width:auto; flex-direction:row; align-items:center; margin-bottom:16px;}
+.vtext{writing-mode:horizontal-tb; border-top:none; border-left:3px solid var(--crimson); padding:0 0 0 12px; font-size:20px; letter-spacing:.24em;}
+.vline{display:none;}
+.count{writing-mode:horizontal-tb;}
+.cell{padding:9px 12px;}
+.effect{font-size:15px; padding:15px 16px 4px;}
+.flavor{margin:12px 16px 17px;}
+.watermark span{font-size:70vw;}
+}
+@media (prefers-reduced-motion: reduce){
+html{scroll-behavior:auto;}
+}
+</style>
+</head>
+<body>
+<div class="watermark" aria-hidden="true"><span>忍</span><span class="b">法</span></div>
+
+<div class="wrap">
+<header>
+<div class="seal-row">
+<div class="seal" aria-hidden="true">忍</div>
+<h1>サポートブック掲載<br><span class="accent">汎用忍法</span>まとめ</h1>
+</div>
+<div class="rule"></div><div class="rule2"></div>
+<nav class="genre-nav" aria-label="分類への移動">
+<a href="#attack"><i>壱</i>攻撃忍法</a>
+<a href="#support"><i>弐</i>サポート忍法</a>
+<a href="#equip"><i>参</i>装備忍法</a>
+</nav>
+</header>
+
+<!-- ================= 攻撃忍法 ================= -->
+<section class="genre" id="attack">
+<div class="genre-label" aria-hidden="true">
+<div class="vtext">攻撃忍法</div><div class="vline"></div><div class="count">全六種</div>
+</div>
+<div class="genre-head"><h2>攻撃忍法</h2><span class="en">Attack</span></div>
+<div class="cards">
+
+<article class="card">
+<div class="card-head"><span class="no">壱</span><span class="name">静舞</span><span class="yomi">しじま</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">攻撃忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">1</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">2</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">隠形術</span></div>
+<p class="effect">接近戦。攻撃が成功すると、目標に接近戦ダメージを１点与え、そのラウンドの間、目標の行う命中判定にマイナス１の修正をつける。</p>
+<p class="flavor">自分の姿や殺気を消し、無心で攻撃を行う。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">弐</span><span class="name">華憐</span><span class="yomi">かれん</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">攻撃忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">1</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">2</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">遊芸</span></div>
+<p class="effect">接近戦。目標が、自分に対してプラスの&#12304;感情&#12305;を持っていた場合、この攻撃の回避判定にはマイナス２の修正がつく。攻撃が成功すると、目標に接近戦ダメージを１点与えることができる。</p>
+<p class="flavor">舞い踊るような攻撃。一瞬見惚れてしまうほど美しい。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">参</span><span class="name">霊弾</span><span class="yomi">れいだん</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">攻撃忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">1</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">3</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">死霊術</span></div>
+<p class="effect">射撃戦。攻撃が成功すると、目標に射撃戦ダメージを１点与え、目標の持っている忍具を一つ失わせることができる（どの忍具を失うかは、攻撃された目標が決定できる）。</p>
+<p class="flavor">周囲に漂う死者の霊魂を操り、攻撃させる。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">肆</span><span class="name">狛衛士</span><span class="yomi">こまえじ</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">攻撃忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">2</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">1</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">用兵術</span></div>
+<p class="effect">集団戦。この攻撃の回避判定はファンブル値が１上昇する。攻撃が成功すると、目標に集団戦ダメージを１点与えることができる。</p>
+<p class="flavor">自分と同じ仮面や装束をつけた下忍を用意して、同時に攻撃を行う。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">伍</span><span class="name">剛剣</span><span class="yomi">ごうけん</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">攻撃忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">1</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">3</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">怪力</span></div>
+<p class="effect">接近戦。この忍法はプロット値４以下にいるキャラクターしか目標に選ぶことができない。攻撃が成功すると、目標に接近戦ダメージを２点与えることができる。</p>
+<p class="flavor">比較的低速な相手に対し、渾身の力で斬りかかる単純だが、強力な攻撃方法。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">陸</span><span class="name">縄鏢</span><span class="yomi">じょうひょう</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">攻撃忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">3</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">2</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">身体操術</span></div>
+<p class="effect">射撃戦。攻撃が成功すると、目標に射撃戦ダメージを１点与えることができる。</p>
+<p class="flavor">縄の先についた鏢と呼ばれる刃物を操る忍法。鏢を相手に直接投げつけたり、縄を自身にからみつけたり、回転させたりすることで多彩な動きが可能。</p>
+</article>
+
+</div>
+</section>
+
+<!-- ================= サポート忍法 ================= -->
+<section class="genre" id="support">
+<div class="genre-label" aria-hidden="true">
+<div class="vtext">サポート忍法</div><div class="vline"></div><div class="count">全十種</div>
+</div>
+<div class="genre-head"><h2>サポート忍法</h2><span class="en">Support</span></div>
+<div class="cards">
+
+<article class="card">
+<div class="card-head"><span class="no">壱</span><span class="name">加速</span><span class="yomi">かそく</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">サポート忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">なし</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">なし</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">なし</span></div>
+<p class="effect">プロット忍法。「プロット」時にプロット値を公開したときに使用できる。自分のプロット値を１上昇することができる（８以上にはならない）。この忍法は、一回の戦闘で一度まで使用できる。</p>
+<p class="flavor">高速機動中、薬剤や機械などの力を借りて、一時的にさらに速度を高める。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">弐</span><span class="name">錨</span><span class="yomi">いかり</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">サポート忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">なし</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">なし</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">なし</span></div>
+<p class="effect">プロット忍法。「プロット」時にプロット値を公開したときに使用できる。自分のプロット値を１減少することができる（０未満にはならない）。この忍法は、一回の戦闘で一度まで使用できる。</p>
+<p class="flavor">高速機動中、急な制動をかけ、速度を低下させる。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">参</span><span class="name">戯言</span><span class="yomi">ざれごと</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">サポート忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">なし</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">2</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">対人術</span></div>
+<p class="effect">自分がプラスの&#12304;感情&#12305;を獲得しているキャラクターが行う判定のサイコロを振った直後に使用できる。その判定を行うキャラクター一人を目標に選ぶ。指定特技の判定に成功すると、その判定のサイコロを一度振り直す。この忍法は、同じセッション中に一度でも使用した相手には二度と効果をもたらさない。</p>
+<p class="flavor">甘言を弄して、相手の心理を操作する。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">肆</span><span class="name">廻呪</span><span class="yomi">かいじゅ</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">サポート忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">なし</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">2</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">可変</span></div>
+<p class="effect">遠隔忍法。自分以外の誰かがサポート忍法を使ったときに使用できる。その忍法の使用者を目標に選ぶ。この忍法の指定特技は、使用時に妖術分野の中からランダムに一種類を選ぶ。指定特技の判定に成功すると、目標の使用したサポート忍法を無効化し、目標に射撃戦ダメージを１点与える。この忍法は、一回のセッションに二度まで使用できる。</p>
+<p class="flavor">呪詛返し。誰かの使用した術を反転させ、術者の肉体や精神に負荷をかける。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">伍</span><span class="name">戦闘指揮</span><span class="yomi">せんとうしき</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">サポート忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">1</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">1</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">好きな戦術</span></div>
+<p class="effect">戦闘中、この忍法の間合内にいる自分以外の誰かが行う判定を行うときに使用できる。その判定を行うキャラクター一人を目標に選ぶ。指定特技の判定に成功すると、目標の行う判定にプラス１かマイナス１の修正をつける。</p>
+<p class="flavor">様々な戦術を用いて、仲間の支援や敵の妨害を行う。戦闘に特化した指揮能力。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">陸</span><span class="name">朔風</span><span class="yomi">さくふう</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">サポート忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">なし</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">1</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">なし</span></div>
+<p class="effect">戦闘中、自分が逆凪になっているときに使用できる。自分を逆凪から回復する。この忍法は、一回のセッションに二度まで使用できる。</p>
+<p class="flavor">自分に瞬間催眠をかけて逆凪を強制的に解除する。一定の動作を行うことで、精神制御を行うルーティンの一種。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">漆</span><span class="name">影文</span><span class="yomi">かげふみ</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">サポート忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">なし</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">1</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">流言の術</span></div>
+<p class="effect">遠隔忍法。自分がシーンプレイヤー時のドラマシーンに使用できる。自分が&#12304;居所&#12305;を獲得しているキャラクターの中から一人を目標に選ぶ。指定特技の判定に成功すると、そのサイクルの間、目標が行うあらゆる判定にマイナス１の修正がつく。</p>
+<p class="flavor">相手の動揺や油断を誘う情報を届ける。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">捌</span><span class="name">触発</span><span class="yomi">しょくはつ</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">サポート忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">なし</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">2</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">生存術</span></div>
+<p class="effect">自分が&#12304;生命力&#12305;を１点以上回復したときに使用できる。自分がプラスの&#12304;感情&#12305;を持っているキャラクター一人を目標に選ぶ。指定特技の判定に成功すると、目標の&#12304;生命力&#12305;を１点回復する。</p>
+<p class="flavor">共に傷ついた仲間と想いを通じ合わせ、共に生き残るべく奮起させる。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">玖</span><span class="name">角指</span><span class="yomi">かくし</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">サポート忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">なし</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">3</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">仕込み</span></div>
+<p class="effect">自分が誰かに攻撃によって接近戦ダメージを与えたときに使用できる。指定特技の判定に成功すると、その接近戦ダメージを１点上昇する。この忍法は、一回のセッションに二度まで使用できる。</p>
+<p class="flavor">指輪に突起のついた隠し武器。肉に食い込んで、多数の傷をつける。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">拾</span><span class="name">障蛾</span><span class="yomi">さわりが</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">サポート忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">なし</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">3</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">鳥獣術</span></div>
+<p class="effect">遠隔忍法。自分以外の誰かが判定のサイコロを振った直後に使用できる。判定を行ったキャラクター一人を目標に選ぶ。指定特技の判定に成功すると、目標の行った判定にマイナス１の修正をつける。この忍法は、自分がシーンに登場していなくても使用できる。この忍法は、一回のセッションに二度まで使用できる。</p>
+<p class="flavor">特殊な蛾を操る忍法。その鱗粉には、人の精神を惑わす成分が含まれている。</p>
+</article>
+
+</div>
+</section>
+
+<!-- ================= 装備忍法 ================= -->
+<section class="genre" id="equip">
+<div class="genre-label" aria-hidden="true">
+<div class="vtext">装備忍法</div><div class="vline"></div><div class="count">全四種</div>
+</div>
+<div class="genre-head"><h2>装備忍法</h2><span class="en">Equipment</span></div>
+<div class="cards">
+
+<article class="card">
+<div class="card-head"><span class="no">壱</span><span class="name">鍔迫</span><span class="yomi">つばぜり</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">装備忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">なし</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">なし</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">なし</span></div>
+<p class="effect">戦闘中、自分と同じプロット値のキャラクターを攻撃する場合、その命中判定にプラス２の修正がつく。</p>
+<p class="flavor">高速機動中、敵が接近したときに発動する思考加速能力。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">弐</span><span class="name">一味</span><span class="yomi">いちみ</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">装備忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">なし</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">なし</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">なし</span></div>
+<p class="effect">エネミーの忍獣カテゴリの「忍犬」（上巻２４８ページ）、下忍カテゴリの「戦闘員」（上巻２５０ページ）、「工作員」（上巻２５１ページ）のいずれか一人を持っている。あなたは、そのエネミーを従者として使用できる。</p>
+<p class="flavor">身の回りの世話をする下忍や忍獣と徒党を組んでいる。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">参</span><span class="name">応報</span><span class="yomi">おうほう</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">装備忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">なし</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">なし</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">なし</span></div>
+<p class="effect">戦闘中、そのラウンド中に自分の&#12304;生命力&#12305;を１点以上減少させた相手を目標にして攻撃を行う場合、その攻撃によるダメージを１点上昇する。</p>
+<p class="flavor">自分が受けた痛み、傷を与えて生まれた隙、怒りや屈辱。それらすべてを攻撃に転化する。</p>
+</article>
+
+<article class="card">
+<div class="card-head"><span class="no">肆</span><span class="name">飛踊</span><span class="yomi">ひよう</span><span class="hanyou">汎用</span></div>
+<div class="meta">
+<div class="cell"><span class="k">タイプ</span><span class="v">装備忍法</span></div>
+<div class="cell"><span class="k">間合</span><span class="v">なし</span></div>
+<div class="cell"><span class="k">コスト</span><span class="v">なし</span></div>
+</div>
+<div class="tokugi"><span class="k">指定特技</span><span class="v">なし</span></div>
+<p class="effect">戦闘中、自分のプロット値未満のプロット値にいるキャラクターから攻撃されたとき、その回避判定にプラス１の修正がつく。</p>
+<p class="flavor">超反応能力。無意識のうちに相手の攻撃を補足し、回避を試みる。</p>
+</article>
+
+</div>
+</section>
+
+<footer>
+<div class="fseal" aria-hidden="true">終</div><br>
+サポートブック掲載汎用忍法まとめ ― 全二十種 ―
+</footer>
+</div>
+</body>
+</html>
